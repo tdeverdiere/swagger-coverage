@@ -18,6 +18,6 @@ dependencies {
     implementation("org.slf4j:slf4j-api")
     implementation("com.fasterxml.jackson.core:jackson-core")
     implementation("com.fasterxml.jackson.core:jackson-databind")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.1")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml")
     testImplementation("junit:junit")
 }

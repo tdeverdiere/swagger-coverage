@@ -19,7 +19,6 @@ import com.intuit.karate.Logger;
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 import com.intuit.karate.core.MockServer;
-import com.intuit.karate.job.JobConfig;
 
 public class SwaggerCoverageRunner extends Runner {
     private static final Logger logger = new Logger();
@@ -67,7 +66,7 @@ public class SwaggerCoverageRunner extends Runner {
             systemProperty("proxy.port", proxyPort + "");
             logger.info("Started proxy at port: {}", proxyPort);
         }
-        
+
         private void backupCoverageOutput(){
             File file = new File(coverageDir, SwaggerCoverageConstants.OUTPUT_DIRECTORY);
             if (file.exists()) {
@@ -97,7 +96,7 @@ public class SwaggerCoverageRunner extends Runner {
 
             Generator generator = new Generator()
                 .setInputPath(inputPath);
-            
+
             if (specificationPath != null) {
                 generator.setSpecPath(specificationPath);
             }
@@ -105,12 +104,12 @@ public class SwaggerCoverageRunner extends Runner {
                 File specFile = Optional.of(Paths.get(coverageDir, SPECIFICATION_NAME + ".json").toFile())
                 .filter((file) -> file.exists())
                 .orElseGet(()-> Paths.get(coverageDir, SPECIFICATION_NAME + ".yaml").toFile());
-                
+
                 if (!specFile.exists()){
                     throw new NoSuchElementException();
                 }
 
-                generator.setSpecPath(specFile.toURI()); 
+                generator.setSpecPath(specFile.toURI());
             }
 
             if (configPath != null){
@@ -140,10 +139,10 @@ public class SwaggerCoverageRunner extends Runner {
             specificationPath = path;
             return this;
         }
-        
+
         public SwaggerCoverageBuilder swaggerCoverageConfig(String configPath){
             this.configPath = configPath;
-            return this; 
+            return this;
         }
 
         public SwaggerCoverageBuilder coverageDir(String coverageDir){
@@ -165,17 +164,9 @@ public class SwaggerCoverageRunner extends Runner {
             return results;
         }
 
-        @Override
-        public Results jobManager(JobConfig value){
-            prepareTests();
-            Results results = super.jobManager(value);
-            generateReport();
-            stopProxy();
-            return results;
-        }
     }
 
-    
+
     public static SwaggerCoverageBuilder path(String... paths) {
         SwaggerCoverageBuilder builder = new SwaggerCoverageBuilder();
         return builder.path(paths);

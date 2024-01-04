@@ -17,13 +17,11 @@ dependencies {
     implementation("com.intuit.karate:karate-core")
 
     //needed for karate runner
-    implementation("com.linecorp.armeria:armeria:1.14.1")
-    implementation("io.netty:netty-all:4.1.74.Final")
-    implementation("org.thymeleaf:thymeleaf:3.0.15.RELEASE")
-    implementation("io.github.classgraph:classgraph:4.8.108")
-    implementation("org.antlr:antlr4-runtime:4.9.3")
-    implementation("org.apache.httpcomponents:httpclient:4.5.13")
-
+    implementation("com.linecorp.armeria:armeria:1.26.4")
+    implementation("io.netty:netty-all:4.1.104.Final")
+    implementation("org.thymeleaf:thymeleaf:3.1.2.RELEASE")
+    implementation("io.github.classgraph:classgraph:4.8.165")
+    implementation("org.apache.httpcomponents:httpclient:4.5.14")
     testImplementation("junit:junit")
     testImplementation("org.hamcrest:hamcrest")
     testImplementation("com.github.tomakehurst:wiremock")
